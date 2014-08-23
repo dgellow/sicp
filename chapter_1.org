@@ -150,11 +150,9 @@
     and ...
 
     #+BEGIN_SRC scheme
-      ;; and ...
       (if (= 0 0)
           0
-          (((p)))) ; infinite loop, `p' will always call himself recursively
-                   ; without any breaking statement
+          (((p)))) ; infinite loop
     #+END_SRC
 
     It will result in an infinite loop, `p' will always call himself
@@ -277,7 +275,8 @@
    evaluated whereas it is not necessary. In our case the
    recursive call of `sqrt-iter' will be expanded infinitely
    despite the fact that the predicate is true.
-   If we use the special-form `if`, the else-clause is
+
+   If instead we use the special-form `if`, the else-clause is
    evaluated only if the predicate is false and therefore
    will not expand the recursive call of `sqrt-iter' when it
    is true.
