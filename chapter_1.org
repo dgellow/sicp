@@ -103,8 +103,8 @@
 * Exercise 1.5
   Ben Bitdiddle has invented a test to determine
   whether the interpreter he is faced with is using
-  applicative-order evaluation or normal-order evaluation.  He
-  defines the following two procedures:
+  applicative-order evaluation or normal-order evaluation.  He  defines
+  the following two procedures:
 
   #+BEGIN_SRC scheme
     (define (p) (p))
@@ -219,7 +219,7 @@
 
 ** Answer
    If the procedure `new-if` works as the special-form `if` the
-   follwing statement should terminate immediately and return 1:
+   following statement should terminate immediately and return 1:
 
    #+BEGIN_SRC scheme
      (sqrt-iter 1 1)
