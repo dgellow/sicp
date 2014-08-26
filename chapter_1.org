@@ -90,14 +90,15 @@
   #+BEGIN_SRC scheme
     (define (a-plus-abs-b a b)
       ((if (> b 0) + -) a b))
-
-    ;; The `if' statement return a function based on the sign of `b'.
-    ;; If `b' is positive the `if' returns the function `+' which result
-    ;; in the addition of `a' and `b'.
-    ;; On the other side, if `b' is negative the `if' returns the function
-    ;; `-' and therefore will result in the addition of `a' and the opposite
-    ;; of `b'.
   #+END_SRC
+
+  The `if' statement return a procedure based on the sign of `b'.
+  If `b' is positive the `if' returns the function `+' which result
+  in the addition of `a' and `b'.
+
+  On the other side, if `b' is negative the `if' returns the function
+  `-' and therefore will result in the addition of `a' and the opposite
+  of `b'.
 
 * Exercise 1.5
   Ben Bitdiddle has invented a test to determine
