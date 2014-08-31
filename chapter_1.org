@@ -92,13 +92,14 @@
       ((if (> b 0) + -) a b))
   #+END_SRC
 
-  The `if' statement return a procedure based on the sign of `b'.
-  If `b' is positive the `if' returns the function `+' which result
-  in the addition of `a' and `b'.
+** Answer
+  The =if= statement return a procedure based on the sign of =b=.
+  If =b= is positive the =if= returns the function =+= which result
+  in the addition of =a= and =b=.
 
-  On the other side, if `b' is negative the `if' returns the function
-  `-' and therefore will result in the addition of `a' and the opposite
-  of `b'.
+  On the other side, if =b= is negative the =if= returns the function
+  =-= and therefore will result in the addition of =a= and the opposite
+  of =b=.
 
 * Exercise 1.5
   Ben Bitdiddle has invented a test to determine
@@ -127,7 +128,7 @@
   applicative-order evaluation?  What behavior will he observe with
   an interpreter that uses normal-order evaluation?  Explain your
   answer.  (Assume that the evaluation rule for the special form
-  `if' is the same whether the interpreter is using normal or
+  =if= is the same whether the interpreter is using normal or
   applicative order: The predicate expression is evaluated first,
   and the result determines whether to evaluate the consequent or
   the alternative expression.)
@@ -156,7 +157,7 @@
           (((p)))) ; infinite loop
     #+END_SRC
 
-    It will result in an infinite loop, `p' will always call himself
+    It will result in an infinite loop, =p= will always call himself
     recursively without any breaking statement.
 
 
@@ -182,11 +183,11 @@
     #+END_SRC
 
 * Exercise 1.6
-  Alyssa P. Hacker doesn't see why `if' needs to be
+  Alyssa P. Hacker doesn't see why =if= needs to be
   provided as a special form.  "Why can't I just define it as an
-  ordinary procedure in terms of `cond'?" she asks.  Alyssa's friend
+  ordinary procedure in terms of =cond=?" she asks.  Alyssa's friend
   Eva Lu Ator claims this can indeed be done, and she defines a new
-  version of `if':
+  version of =if=:
 
   #+BEGIN_SRC scheme
     (define (new-if predicate then-clause else-clause)
@@ -204,7 +205,7 @@
     ;; result: 0
   #+END_SRC
 
-  Delighted, Alyssa uses `new-if' to rewrite the square-root program:
+  Delighted, Alyssa uses =new-if= to rewrite the square-root program:
 
   #+BEGIN_SRC scheme
     (define (sqrt-iter guess x)
@@ -218,7 +219,7 @@
   roots?  Explain.
 
 ** Answer
-   If the procedure `new-if` works as the special-form `if` the
+   If the procedure =new-if= works as the special-form =if= the
    following statement should terminate immediately and return 1:
 
    #+BEGIN_SRC scheme
@@ -227,7 +228,7 @@
 
    Instead the process hangs and doesn't stop.
 
-   The explication can be illustrated by expanding `sqrt-iter`
+   The explication can be illustrated by expanding =sqrt-iter=
    using applicative-order evaluation or normal-order evulation
    (it doesn't matter which one, they will both encounter the same
    problem):
@@ -272,36 +273,36 @@
 
    #+END_SRC
 
-   When we use the procedure `new-if' the else-clause is
+   When we use the procedure =new-if= the else-clause is
    evaluated whereas it is not necessary. In our case the
-   recursive call of `sqrt-iter' will be expanded infinitely
+   recursive call of =sqrt-iter= will be expanded infinitely
    despite the fact that the predicate is true.
 
-   If instead we use the special-form `if`, the else-clause is
+   If instead we use the special-form =if=, the else-clause is
    evaluated only if the predicate is false and therefore
-   will not expand the recursive call of `sqrt-iter' when it
+   will not expand the recursive call of =sqrt-iter= when it
    is true.
 
 * Exercise 1.7
-  The `good-enough?' test used in computing square
+  The =good-enough?= test used in computing square
   roots will not be very effective for finding the square roots of
   very small numbers.  Also, in real computers, arithmetic operations
   are almost always performed with limited precision.  This makes
   our test inadequate for very large numbers.  Explain these
   statements, with examples showing how the test fails for small and
   large numbers.  An alternative strategy for implementing
-  `good-enough?' is to watch how `guess' changes from one iteration
+  =good-enough?= is to watch how =guess= changes from one iteration
   to the next and to stop when the change is a very small fraction
   of the guess.  Design a square-root procedure that uses this kind
   of end test.  Does this work better for small and large numbers?
 
 ** Answer
-   As our procedure `good-enough?' set a tolerance of 0.001 we cannot
+   As our procedure =good-enough?= set a tolerance of 0.001 we cannot
    compute square root of numbers smaller than 0.01 with a reasonable
    accuracy as we cannot even guarantee the correctness of the first
    significant digit.
 
-   If we call `(sqrt 0.001)' we get the result 0.04124542607499115
+   If we call =(sqrt 0.001)= we get the result 0.04124542607499115
    instead of 0.0316227766.
    The stacktrace of the computation is the following :
 
@@ -333,8 +334,8 @@
 
    The problem with large numbers is different.
 
-   A call to `(sqrt 99999999999999)' [length of 14] is nearly instant
-   where a call to `(sqrt 999999999999999)' [length of 15] seems to
+   A call to =(sqrt 99999999999999)= [length of 14] is nearly instant
+   where a call to =(sqrt 999999999999999)= [length of 15] seems to
    not terminate.
 
    I am not sure to understand what is the exact reason of the
@@ -403,7 +404,7 @@
 * Exercise 1.9
   Each of the following two procedures defines a
   method for adding two positive integers in terms of the procedures
-  `inc', which increments its argument by 1, and `dec', which
+  =inc=, which increments its argument by 1, and =dec=, which
   decrements its argument by 1.
 
   #+BEGIN_SRC scheme
@@ -419,14 +420,14 @@
   #+END_SRC
 
   Using the substitution model, illustrate the process generated by
-  each procedure in evaluating `(+ 4 5)'.  Are these processes
+  each procedure in evaluating =(+ 4 5)=.  Are these processes
   iterative or recursive?
 
 
 
 ** Answer
 *** Optional
-    Implementations of `inc' and `dec' as they don't exist in racket
+    Implementations of =inc= and =dec= as they don't exist in racket
 
     #+BEGIN_SRC scheme
       (require (prefix-in base:: racket/base))
@@ -440,9 +441,9 @@
 
 *** First procedure
     The first procedure is a recursive process. It generates a chain
-    of call to the `inc' procedure to perform the addition.
+    of call to the =inc= procedure to perform the addition.
 
-    If we call it with `(+ 4 5)', the substitution model will be:
+    If we call it with =(+ 4 5)=, the substitution model will be:
     #+BEGIN_SRC scheme
       (if (= 4 0)
           5
@@ -466,11 +467,11 @@
 
 *** Second procedure
     That one is an iterative process. At each iteration we update
-    parameters and call again the `+' procedure with them. As it
-    relies only on parameters passed to the `+' procedure, the last
-    step `(+ 0 9)' could replace the whole process.
+    parameters and call again the =+= procedure with them. As it
+    relies only on parameters passed to the =+= procedure, the last
+    step =(+ 0 9)= could replace the whole process.
 
-    Again, we call it with `(+ 4 5)', we will get the following
+    Again, we call it with =(+ 4 5)=, we will get the following
     substitution model:
 
     #+BEGIN_SRC scheme
@@ -511,7 +512,7 @@
     (A 3 3)
   #+END_SRC
 
-  Consider the following procedures, where `A' is the procedure
+  Consider the following procedures, where =A= is the procedure
   defined above:
 
   #+BEGIN_SRC scheme
@@ -525,8 +526,8 @@
   #+END_SRC
 
   Give concise mathematical definitions for the functions computed
-  by the procedures `f', `g', and `h' for positive integer values of
-  n.  For example, `(k n)' computes 5n^{2}.
+  by the procedures =f=, =g=, and =h= for positive integer values of
+  n.  For example, =(k n)= computes 5n^{2}.
 
 ** Answer
    #+BEGIN_SRC scheme
@@ -540,7 +541,7 @@
     ;; result: 65536
   #+END_SRC
 
-   Procedures `f', `g' and `h' will computes:
-   - `(f n)': 2n
-   - `(g n)': 2^{n}
-   - `(h n)': 2^{2^{...^{2}}} (n times)
+   Procedures =f=, =g= and =h= will computes:
+   - =(f n)=: 2n
+   - =(g n)=: 2^{n}
+   - =(h n)=: 2^{2^{...^{2}}} (n times)
